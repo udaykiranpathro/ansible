@@ -1,0 +1,14 @@
+---
+- hosts: all
+  become: yes
+  tasks:
+    - name: install httpd
+      command: yum install httpd -y
+
+    - name: restart httpd
+      command: systemctl restart httpd
+
+    - name: pulling source code
+      git:
+        repo: 'https://github.com/udaykiranpathro/samplehtml.git'
+        dest: '/var/www/html'
